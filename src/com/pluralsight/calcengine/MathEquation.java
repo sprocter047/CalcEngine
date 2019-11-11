@@ -26,6 +26,18 @@ public class MathEquation {
         this.rightVal = rightVal;
     }
 
+    public void execute(double leftVal, double rightVal) {
+        this.leftVal = leftVal;
+        this.rightVal = rightVal;
+        execute();
+    }
+    public void execute(int leftVal, int rightVal) {
+        this.leftVal = leftVal;
+        this.rightVal = rightVal;
+        execute();
+        result = (int)result;
+    }
+
     public void execute()  {
 
             switch (opCode) {
@@ -33,10 +45,10 @@ public class MathEquation {
                     result = leftVal + rightVal;
                     break;
                 case 's':
-                    result = rightVal - leftVal;
+                    result = leftVal - rightVal;
                     break;
                 case 'd':
-                    result = leftVal != 0.0d ? rightVal / leftVal : 0.0d;
+                    result = leftVal != 0.0d ? leftVal / rightVal : 0.0d;
                     break;
                 case 'm':
                     result = rightVal * leftVal;
