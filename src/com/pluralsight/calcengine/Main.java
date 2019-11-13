@@ -3,14 +3,23 @@ package com.pluralsight.calcengine;
 public class Main {
 
 	public static void main(String[] args) {
-//	    double[] leftVals = {100.0d, 25.0d, 225.0d, 11.0d};
-//		double[] rightVals = {50.0d, 92.0d, 17.0d, 3.0d};
-//	    char[] opCodes = {'d', 'a', 's', 'm'};
-//	    double[] results = new double[opCodes.length];
-//		MathEquation testEquation = new MathEquation();
-//		testEquation.execute();
-//		System.out.print("test=");
-//		System.out.println(testEquation.getResult());
+		//useMathEquation();
+		//useCalulatorBase();
+
+		String[] statements = {
+				"divide 100.0 50.0",
+				"add 25.0 92.0",
+				"substract 2225.0 17.0",
+				"multiply 11.0 3.0"
+		};
+		CalculateHelper helper = new CalculateHelper();
+		for(String statement:statements) {
+			helper.process(statement);
+			System.out.println("*********");
+			System.out.println(helper);
+			System.out.println("***********");
+		}
+
 
 		MathEquation[] equations = new MathEquation[4];
 		equations[0] = new MathEquation('d',100.0d, 50.0d );
@@ -46,6 +55,22 @@ public class Main {
 		equationOverload.execute((double)leftInt, rightInt);
 		System.out.print("result=");
 		System.out.println(equationOverload.getResult());
+
+		System.out.println();
+		System.out.println("Using Inheritance");
+		System.out.println();
+
+		CalculateBase[] calculators = {
+				new Divider(100.0d, 50.0d),
+				new Adder(25.0d, 92.0d),
+				new Subtracter(225.0d, 17.0d),
+				new Multiplier(11.0d, 3.0d)
+		};
+		for(CalculateBase calculator:calculators) {
+			calculator.calculate();
+			System.out.print("result=");
+			System.out.println(calculator.getResult());
+		}
 
 	}
 
